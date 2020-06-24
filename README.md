@@ -3,7 +3,7 @@
 
 ## Getting started
 
-`$ npm install react-native-get-thumbnail --save`
+`$ yarn add https://github.com/CaoLP/react-native-get-thumbnail.git`
 
 ### Mostly automatic installation
 
