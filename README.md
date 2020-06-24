@@ -50,4 +50,55 @@ import RNGetThumbnail from 'react-native-get-thumbnail';
 // TODO: What to do with the module?
 RNGetThumbnail;
 ```
-  
+
+
+
+## Example code
+
+```javascript
+
+import React, {useState} from 'react';
+import {
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
+
+import RNGetThumbnail from 'react-native-get-thumbnail';
+
+const App: () => React$Node = () => {
+  const [uri, setUri] = useState('');
+
+  const generateThumbnail = async () => {
+    try {
+      const {uri} = await RNGetThumbnail.getThumbnail(
+        'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
+        {
+          time: 5000,
+        },
+      );
+      console.log(uri);
+      setUri(uri);
+    } catch (e) {
+      console.warn(e);
+    }
+  };
+  return (
+    <>
+      <StatusBar barStyle="dark-content" />
+      <SafeAreaView>
+         <TouchableOpacity onPress={generateThumbnail}>
+              <Text>GET IMAGE</Text>
+            </TouchableOpacity>
+            <Image
+              source={{uri: uri}}
+              style={{height: 500, flex: 1}}
+              resizeMode={'contain'}></Image>
+      </SafeAreaView>
+    </>
+  );
+};
+
+export default App;
+```
